@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Varela Round', sans-serif; */
+    font-family: 'Abril Fatface', cursive;
+}
+
+/* Index page  */
+
+.cover {
+    /* background-color: #f4d9ee; */
+    background-image: url("/img/wedding.png");
+    opacity: 0.6;
+    background-size: cover;
+    height:200px; 
+    padding-top:80px;
+}
+
+form h1 {
+    margin-bottom: 30px;
+    font-size: 50px;
+    text-decoration: underline;
+    color: rgb(84, 82, 82);
+}
+
+.form {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 60px 0;
+}
+
+.form label {
+    font-size: 20px;
+    color: rgb(84, 82, 82);
+}
+
+.btn-primary {
+    margin-top: 20px;
+    font-size: 19px;
+    font-weight: lighter;
+    color: rgb(244, 223, 226);
+    background-color: rgb(84, 82, 82, 0.9);
+    border-color: rgb(84, 82, 82, 0.8);
+}
+
+    .btn-primary a {
+        color: rgb(244, 223, 226);
+    }
+
+.btn-primary:hover {
+    color: rgb(238, 152, 166);
+    background-color: rgb(84, 82, 82);
+    border-color: rgb(84, 82, 82);
+}
+
+/* Dashboard page  */
+
+.dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 30px 5vw;
+    color: rgb(84, 82, 82);
+}
+
+.dashboardHeader h1 {
+    font-size: 35px;
+}
+.dashboardHeader a {
+    color: rgb(158, 158, 244);
+    text-decoration: underline;
+}
+
+.table {
+    margin: 50px auto;
+    width: 90%;
+    color: rgb(84, 82, 82);
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.table td, th {
+    color: rgb(84, 82, 82);
+}
+
+.table a {
+    color: rgb(247, 142, 157);
+}
+
+/* Create Page  */
+.weddingFormBox {
+    display: flex;
+    justify-content: space-around;
+    color: rgb(84, 82, 82);
+}
+
+.weddingForm {
+    margin-left: 70px;
+}
+
+.weddingForm h2 {
+    margin: 50px 0;
+}
+
+.createHeaderLinks {
+    margin: 70px 70px 0 0;
+}
+
+.createHeaderLinks a {
+    margin-right: 20px;
+    text-decoration: underline;
+    font-size: 25px;
+    color: rgb(158, 158, 244);
+}
+
+/* WeddingDetail Page */
+.detailViewHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    color: rgb(84, 82, 82);
+}
+
+.weddingDate {
+    margin-bottom: 30px;
+    background-color:rgb(244, 223, 226);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.detailBox {
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    color: rgb(84, 82, 82);
+    margin: 5vw 10vh;
+}
+
+.detailBox .left h4 {
+    text-decoration: underline;
+}
+
+.detailBox .left li {
+    font-size: 20px;
+}
+
+.detailBox .left ul {
+    margin-bottom: 30px;
+    margin-left: 50px;
+}
+
+.detailBox .left h5{
+    color:rgb(158, 200, 244);
+}
+
+.mapBox {
+    margin: 0 auto;
+    width: 45vw;
+    height: 45vh;
+    border-radius: 15px;
+    border: 0;
+    /* margin-bottom: 100px; */
+}

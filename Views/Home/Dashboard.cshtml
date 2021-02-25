@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Wedding Planner</title>
+</head>
+@* ViewBag.AllWedding *@
+@* ViewBag.CurrentUser *@
+<body>
+    <div class="wrapper">
+        <div class="cover">
+        </div>
+        <div class="dashboardHeader">
+            <h1>Welcome to the Wedding Planner, @ViewBag.CurrentUser.FirstName!</h1>
+            <h3><a href="/logout">Log Out</a></h3>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Wedding</th>
+                <th>Date</th>
+                <th>Guest</th>
+                <th>Action</th>
+                <th>Wedding Planner</th>
+            </tr>
+            @foreach(Wedding wed in ViewBag.AllWedding)
+                {
+                <tr>
+                <td><a href="/wedding/@wed.WeddingId">@wed.WedderOne & @wed.WedderTwo</a></td>
+                <td>@wed.Date.ToString("MMM dd yyyy")</td>
+                <td>@wed.RSVPs.Count</td>
+                <td>
+                    @* * if wedding is created by current user: delete - can be both form(post) or a link *@
+                    @if(ViewBag.CurrentUser.UserId == wed.CreatedBy.UserId)
+                    {
+                        
+                        <a class="btn btn-outline-danger" style="color: salmon" asp-controller="Home" asp-action="Delete" asp-route-weddingId=@wed.WeddingId>Delete</a>
+                    }
+                    @* * if not created by me & not RSVPed: RSVP - check first to see if I RSVPed the wedding *@
+                    else if (wed.RSVPs.Any(r => r.UserId == ViewBag.CurrentUser.UserId))
+                    {
+                        <a class="btn btn-outline-warning" style="color: sandyBrown" asp-controller="Home" asp-action="UnRSVP" asp-route-weddingId=@wed.WeddingId>Un-RSVP</a>
+                    }
+                    @* * if not created by me & RSVP: Un-RSVP *@
+                    else
+                    {
+                        <a class="btn btn-outline-success" style="color: mediumSeaGreen;" asp-controller="Home" asp-action="RSVP" asp-route-weddingId=@wed.WeddingId>RSVP</a>
+                    }
+                </td>
+                <td>@wed.CreatedBy.FirstName @wed.CreatedBy.LastName</td> 
+                </tr>
+                }
+        </table>
+        <div class="col text-center">
+            <button class="btn btn-primary"><a href="/create">New Wedding</a></button>
+        </div>
+    </div>
+
+</body>
+
+</html>

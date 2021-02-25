@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Wedding Planner</title>
+</head>
+
+<body>
+    @* @ViewBag.OneWedding *@
+    @model Wedding
+
+    <div class="wrapper">
+        <div class="cover">
+        </div>
+
+        <div class="detailViewHeader">
+            <h1>@ViewBag.OneWedding.WedderOne and @ViewBag.OneWedding.WedderTwo's Wedding</h1>
+
+            <div class="createHeaderLinks">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Log Out</a>
+            </div>
+
+        </div>
+        <div class="detailBox">
+            <div class="left">
+                <h3 class="weddingDate">Date: @ViewBag.OneWedding.Date.ToString("MMMMMM dd, yyyy")</h3>
+                @* @ViewBag.OneWedding.Date.ToString() for non-nullable field only *@
+                <ul>
+                    <h4>Guests:</h4>
+                    @foreach (var guest in ViewBag.OneWedding.RSVPs)
+                    {
+                        <li>@guest.UserWhoRSVPd.FirstName @guest.UserWhoRSVPd.LastName</li>
+                    }
+                </ul>
+                @* <h5>Address: @ViewBag.OneWedding.Address</h5> *@
+
+            </div>
+            <div class="right">
+                @* <h6 style="color: gray">(Replace w/ a map later!)</h6>
+                <img src="https://imgix.bustle.com/uploads/image/2019/10/8/f58136b8-92ba-4ad6-9d16-833da7682b5c-the-office.jpg?w=1020&h=574&fit=crop&crop=faces&auto=format%2Ccompress"
+                    alt="wedding" style="width: 500px"> *@
+                
+                @* from https://developers.google.com/maps/documentation/embed/embedding-map 
+                https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Eiffel+Tower,Paris+France *@
+
+                 <iframe class="mapBox"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAkCIdzdGDHSiyqClzgt5xfjJrb44QDlmA&q=@ViewBag.OneWedding.Address"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+
+        </div>
+
+</body>
+
+</html>
